@@ -37,13 +37,13 @@ class Panel extends JPanel
     //Constructor to initialize variables
     public Panel()
     {
-        setBackground(Color.pink);
+        setBackground(Color.black);
         run();
     }
     public void run()
     {
         System.out.print("\n\n\n");
-
+        
         Scanner scan = new Scanner(System.in);
         System.out.print("How many snowmen would you like(1-4)? ");
         num = scan.nextInt();
@@ -55,6 +55,8 @@ class Panel extends JPanel
 
     public void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
+        //Fg.fillRect(0, 0, 800, 480);
         if(num>=1)
         {
             int xn = 55;
@@ -67,6 +69,59 @@ class Panel extends JPanel
                 Snowmen(g, xn, yn);
             }
         }
+        g.setColor(Color.black);
+        g.setFont(new Font("Serif", Font.ITALIC, 36));
+        int[]starx = new int[]{210, 215, 223, 219, 223, 215, 210, 205, 197, 201, 197, 205 };
+        int[]stary = new int[]{15, 22, 22, 30, 38, 38, 45, 38, 38, 30, 22, 22};
+        Stars(g, starx, stary);
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] +60;
+            starx[i] = starx[i] - 150;
+        }
+        Stars(g, starx, stary);
+
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] + 30;
+            starx[i] = starx[i] + 60;
+        }
+        Stars(g, starx, stary);
+
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] + 60;
+            starx[i] = starx[i] - 30;
+        }
+        Stars(g, starx, stary);
+
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] + 15;
+            starx[i] = starx[i] + 150;
+        }
+        Stars(g, starx, stary);
+
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] -75;
+            starx[i] = starx[i] + 90;
+        }
+        Stars(g, starx, stary);
+
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] - 60;
+            starx[i] = starx[i] + 60;
+        }
+        Stars(g, starx, stary);
+
+        for (int i = 0; i  < 12; i++)
+        {
+            stary[i] = stary[i] + 120;
+            starx[i] = starx[i] + 30;
+        }
+        Stars(g, starx, stary);
     }
     public void Stars(Graphics g2, int [] starx, int[]stary )	//passes in the graphics variable
     {
@@ -86,6 +141,10 @@ class Panel extends JPanel
         g3.setColor(Color.PINK);
         g3.fillArc(520, 0, 90, 150, 90, -180);
     }
+    //Method used to draw Snowmen
+    /*
+     * @param g: this is the graphics variable needed in order to draw on the Panel
+     */
     public void Snowmen(Graphics g, int xn, int yn)
     {
         g.setColor(Color.WHITE);
@@ -103,6 +162,7 @@ class Panel extends JPanel
         g.fillOval(xn + 20, yn + 65, 10, 10);
         g.fillOval(xn + 20, yn + 80, 10, 10);
 
+        g.setColor(new Color(150, 75, 0));
         g.drawLine(xn+55, yn + 65, xn + 85, yn +110);
         g.drawLine(xn-5, yn + 65, xn -35, yn +110);
     }
